@@ -3,217 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Job Hunt Earnings Board | V.I.T.A.L. Frameworks</title>
-
-<meta name="description"
-content="Track your job search pipeline — applications, interviews, offers, and projected earnings.">
-
-<style>
-
-:root{
-    --primary:#2563eb;
-    --secondary:#1d4ed8;
-    --success:#059669;
-    --warning:#d97706;
-    --danger:#dc2626;
-    --info:#0891b2;
-    --light:#f8fafc;
-    --border:#e5e7eb;
-    --bg-body:#f9fafb;
-    --bg-card:#ffffff;
-    --text-main:#111827;
-    --text-muted:#4b5563;
-    --footer-text:#6b7280;
-    --shadow:rgba(0,0,0,.08);
-    --font-scale:1;
-}
-
-[data-theme="dark"]{
-    --primary:#58a6ff;
-    --secondary:#79b8ff;
-    --success:#3fb950;
-    --warning:#d29922;
-    --danger:#f85149;
-    --info:#22d3ee;
-    --light:#161b22;
-    --border:#30363d;
-    --bg-body:#0d1117;
-    --bg-card:#161b22;
-    --text-main:#f0f6fc;
-    --text-muted:#8b949e;
-    --footer-text:#8b949e;
-    --shadow:rgba(0,0,0,.4);
-}
-
-*{box-sizing:border-box;}
-
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:var(--bg-body);
-    color:var(--text-main);
-    transition:background .3s, color .3s;
-}
-
-.skip-link{
-    position:absolute;top:-60px;left:0;background:var(--primary);color:#fff;
-    padding:10px 16px;z-index:1000;text-decoration:none;border-radius:0 0 8px 0;transition:top .2s;
-}
-.skip-link:focus{top:0;}
-
-.sr-only{
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-    clip:rect(0,0,0,0);white-space:nowrap;border:0;
-}
-
-.a11y-bar{
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;
-    background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;
-    position:sticky;top:0;z-index:900;
-}
-.a11y-group{display:flex;align-items:center;gap:6px;}
-.a11y-label{font-size:.85rem;font-weight:600;color:var(--text-muted);margin-right:4px;}
-.a11y-btn{
-    min-width:40px;min-height:40px;padding:8px 12px;font-size:1rem;font-weight:600;
-    border:2px solid var(--border);border-radius:6px;background:var(--bg-body);
-    color:var(--text-main);cursor:pointer;transition:background .2s,border-color .2s;
-}
-.a11y-btn:hover{border-color:var(--primary);}
-.a11y-btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px;}
-.a11y-btn[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary);}
-.a11y-btn:disabled{opacity:.45;cursor:not-allowed;}
-#font-level-display{font-size:.85rem;color:var(--text-muted);min-width:44px;text-align:center;}
-
-.hero{
-    max-width:1200px;margin:24px auto 0;padding:40px 25px;background:var(--bg-card);
-    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);text-align:center;
-}
-.hero h1{margin:0;font-size:calc(2.4rem * var(--font-scale));color:var(--primary);}
-.hero p{font-size:calc(1.1rem * var(--font-scale));color:var(--text-muted);margin-top:15px;}
-
-.site-nav{
-    max-width:1200px;margin:16px auto 0;padding:12px 20px;background:var(--bg-card);
-    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);
-}
-.site-nav ul{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.site-nav a{
-    display:inline-block;padding:10px 14px;text-decoration:none;color:var(--primary);
-    font-weight:600;border-radius:6px;font-size:calc(1rem * var(--font-scale));
-}
-.site-nav a:hover,.site-nav a:focus-visible{background:var(--primary);color:#fff;outline:none;}
-.site-nav a[aria-current="page"]{background:var(--primary);color:#fff;}
-
-.container{max-width:1200px;margin:auto;padding:40px 20px;}
-
-.progress-box{
-    background:var(--bg-card);padding:25px;border-radius:12px;margin-bottom:40px;
-    box-shadow:0 2px 8px var(--shadow);border:1px solid var(--border);
-}
-.progress-box h2{margin-top:0;font-size:calc(1.6rem * var(--font-scale));}
-.progress-box p,.progress-box li{font-size:calc(1rem * var(--font-scale));}
-
-.section-heading{
-    font-size:calc(1.6rem * var(--font-scale));color:var(--primary);
-    margin:50px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--border);
-}
-.section-intro{
-    color:var(--text-muted);font-size:calc(1rem * var(--font-scale));margin:-10px 0 25px;
-}
-
-.card{
-    background:var(--bg-card);border-radius:12px;padding:25px;
-    box-shadow:0 2px 8px var(--shadow);transition:transform .25s,box-shadow .25s;
-    border:1px solid var(--border);
-}
-.card:hover{transform:translateY(-4px);box-shadow:0 6px 16px var(--shadow);}
-.card h3{color:var(--primary);margin-top:0;font-size:calc(1.3rem * var(--font-scale));}
-.card p{color:var(--text-muted);font-size:calc(1rem * var(--font-scale));}
-.card a{
-    display:inline-block;margin-top:10px;text-decoration:none;color:white;
-    background:var(--primary);padding:10px 16px;border-radius:6px;font-size:calc(1rem * var(--font-scale));
-}
-.card a:hover,.card a:focus-visible{background:var(--secondary);}
-.card a:focus-visible{outline:3px solid var(--primary);outline-offset:3px;}
-
-.grid{
-    display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:25px;
-}
-
-/* ===== Stats ===== */
-.stats-row{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:20px;margin-bottom:30px;}
-.stat-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:24px;text-align:center;box-shadow:0 2px 8px var(--shadow);}
-.stat-card .stat-value{font-size:calc(2rem * var(--font-scale));font-weight:800;color:var(--primary);margin:0;}
-.stat-card .stat-label{font-size:calc(.9rem * var(--font-scale));color:var(--text-muted);margin-top:4px;}
-.stat-card.green .stat-value{color:var(--success);}
-.stat-card.orange .stat-value{color:var(--warning);}
-.stat-card.red .stat-value{color:var(--danger);}
-.stat-card.blue .stat-value{color:var(--info);}
-
-/* ===== Pipeline ===== */
-.pipeline{display:flex;gap:0;margin-bottom:30px;border-radius:12px;overflow:hidden;border:1px solid var(--border);}
-.pipeline-segment{flex:1;padding:20px;text-align:center;background:var(--bg-card);border-right:1px solid var(--border);font-size:calc(.95rem * var(--font-scale));font-weight:600;color:var(--text-muted);}
-.pipeline-segment:last-child{border-right:none;}
-.pipeline-segment .p-count{font-size:calc(1.8rem * var(--font-scale));font-weight:800;display:block;margin-bottom:4px;}
-.pipeline-segment.applications .p-count{color:var(--primary);}
-.pipeline-segment.screening .p-count{color:var(--info);}
-.pipeline-segment.interview .p-count{color:var(--warning);}
-.pipeline-segment.offer .p-count{color:var(--success);}
-.pipeline-segment.rejected .p-count{color:var(--danger);}
-
-/* ===== Add Form ===== */
-.add-form{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:25px;margin-bottom:30px;box-shadow:0 2px 8px var(--shadow);}
-.add-form h2{margin-top:0;font-size:calc(1.4rem * var(--font-scale));color:var(--primary);}
-.form-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;}
-.form-row label{display:flex;flex-direction:column;font-size:calc(.85rem * var(--font-scale));font-weight:600;color:var(--text-muted);flex:1;min-width:150px;}
-.form-row input,.form-row select{padding:10px 12px;font-size:calc(.95rem * var(--font-scale));border:1px solid var(--border);border-radius:6px;background:var(--bg-body);color:var(--text-main);}
-.form-row input:focus,.form-row select:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.2);}
-.add-btn,.export-btn,.import-btn{padding:12px 24px;border:none;border-radius:6px;font-size:calc(1rem * var(--font-scale));font-weight:700;cursor:pointer;transition:background .2s;}
-.add-btn{background:var(--primary);color:#fff;}
-.add-btn:hover{background:var(--secondary);}
-.export-btn{background:var(--success);color:#fff;}
-.export-btn:hover{background:#047857;}
-.import-btn{background:var(--warning);color:#fff;}
-.import-btn:hover{background:#b45309;}
-.form-actions{display:flex;gap:12px;margin-top:8px;flex-wrap:wrap;}
-
-/* ===== Table ===== */
-.table-wrap{overflow-x:auto;background:var(--bg-card);border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);}
-table{width:100%;border-collapse:collapse;font-size:calc(.9rem * var(--font-scale));}
-thead{background:var(--bg-body);}
-th{text-align:left;padding:14px 16px;font-weight:700;color:var(--text-muted);border-bottom:2px solid var(--border);white-space:nowrap;}
-td{padding:12px 16px;border-bottom:1px solid var(--border);color:var(--text-main);}
-tbody tr:hover{background:var(--bg-body);}
-tbody tr:last-child td{border-bottom:none;}
-.status-badge{display:inline-block;padding:4px 10px;border-radius:20px;font-size:.8rem;font-weight:700;text-transform:uppercase;}
-.status-badge.application{background:rgba(37,99,235,.12);color:var(--primary);}
-.status-badge.screening{background:rgba(8,145,178,.12);color:var(--info);}
-.status-badge.interview{background:rgba(217,119,6,.12);color:var(--warning);}
-.status-badge.offer{background:rgba(5,150,105,.12);color:var(--success);}
-.status-badge.rejected{background:rgba(220,38,38,.12);color:var(--danger);}
-.status-badge.accepted{background:rgba(5,150,105,.2);color:var(--success);}
-.delete-btn{background:none;border:none;color:var(--danger);cursor:pointer;font-size:1.1rem;padding:4px 8px;border-radius:4px;transition:background .2s;}
-.delete-btn:hover{background:rgba(220,38,38,.1);}
-.empty-state{text-align:center;padding:40px;color:var(--text-muted);font-size:calc(1rem * var(--font-scale));}
-
-/* ===== Filter Bar ===== */
-.filter-bar{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:16px;align-items:center;}
-.filter-btn{padding:6px 14px;border:1px solid var(--border);border-radius:20px;background:var(--bg-card);color:var(--text-muted);font-size:calc(.85rem * var(--font-scale));font-weight:600;cursor:pointer;transition:all .2s;}
-.filter-btn:hover,.filter-btn.active{background:var(--primary);color:#fff;border-color:var(--primary);}
-
-footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px solid var(--border);margin-top:40px;}
-
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}.card:hover{transform:none;}}
-@media print{.a11y-bar,.site-nav,.add-btn,.delete-btn,.filter-bar,.form-actions{display:none;}body{background:#fff;color:#000;}}
-
-</style>
+<meta name="description" content="Track your job search pipeline — applications, interviews, offers, and projected earnings.">
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
     <div class="a11y-group" role="group" aria-label="Text size controls">
         <span class="a11y-label" id="font-label">Text Size</span>
@@ -227,7 +24,6 @@ footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px so
     </div>
 </div>
 
-<!-- ==== Top Navigation === -->
 <div id="site-nav" class="site-nav" aria-label="Primary"></div>
 <script src="nav.js"></script>
 
@@ -239,7 +35,7 @@ footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px so
 <main class="container" id="main-content">
 
 <section class="progress-box" aria-labelledby="goal-heading">
-<h2 id="goal-heading">The Big Idea</h2>
+<h2 id="goal-heading">The Hunt for Earnings</h2>
 <p>
 Your job search is a polynomial — many applications (terms), each with its own coefficient (salary, fit, timing), intersecting to produce one outcome: the offer you accept. This board names those variables so you can read the result instead of guessing.
 </p>
@@ -255,7 +51,12 @@ Your job search is a polynomial — many applications (terms), each with its own
 <h2 class="section-heading" id="pipeline-heading">Pipeline Overview</h2>
 <p class="section-intro">Live counts update as you add entries below.</p>
 
-<div class="stats-row" id="stats-row"></div>
+<div class="stats-row" id="stats-row">
+    <div class="stat-card red"><div class="stat-value" id="burn-value">$0</div><div class="stat-label">Monthly Burn Rate</div></div>
+    <div class="stat-card red"><div class="stat-value" id="runway-value">--</div><div class="stat-label">Months of Runway</div></div>
+    <div class="stat-card orange"><div class="stat-value" id="conversion-value">0%</div><div class="stat-label">App → Interview Rate</div></div>
+    <div class="stat-card green"><div class="stat-value" id="expected-value">$0</div><div class="stat-label">Expected Monthly Earnings</div></div>
+</div>
 <div class="pipeline" id="pipeline"></div>
 
 <h2 class="section-heading" id="entry-heading">Add an Entry</h2>
@@ -279,7 +80,15 @@ Your job search is a polynomial — many applications (terms), each with its own
 <label>Applied Date<input type="date" id="f-date"></label>
 </div>
 <div class="form-row">
+<label>Supporting Pages<textarea id="f-pages" placeholder="One URL per line. The pages that got you this application:
+- LinkedIn post by Jane Doe
+- Company career page
+- Referral from Alex"></textarea></label>
 <label>Notes (optional)<input type="text" id="f-notes" placeholder="e.g., Referral from Alex"></label>
+</div>
+<div class="form-row">
+<label>Monthly Burn Rate ($)<input type="number" id="f-burn" placeholder="e.g., 4500" min="0" required></label>
+<label>Available Savings ($)<input type="number" id="f-savings" placeholder="e.g., 20000" min="0" required></label>
 </div>
 <div class="form-actions">
 <button type="submit" class="add-btn">+ Add Entry</button>
@@ -294,9 +103,70 @@ Your job search is a polynomial — many applications (terms), each with its own
 <div class="filter-bar" id="filter-bar"></div>
 <div class="table-wrap">
 <table>
-<thead><tr><th>Company</th><th>Role</th><th>Status</th><th>Salary</th><th>Applied</th><th>Notes</th><th></th></tr></thead>
+<thead><tr><th>Company</th><th>Role</th><th>Status</th><th>Salary</th><th>Applied</th><th>Pages</th><th>Notes</th><th></th></tr></thead>
 <tbody id="entries-body"></tbody>
 </table>
+</div>
+
+<h2 class="section-heading" id="efficiency-heading">Efficiency Dashboard</h2>
+<p class="section-intro">Your supporting pages, ranked by effectiveness. Double down on what works.</p>
+
+<div class="efficiency-section">
+    <div class="eff-card">
+        <h3>📈 Page Performance</h3>
+        <table class="eff-table">
+            <thead>
+                <tr>
+                    <th>Page</th>
+                    <th>Apps</th>
+                    <th>Interviews</th>
+                    <th>Rate</th>
+                    <th class="bar-cell">Yield</th>
+                </tr>
+            </thead>
+            <tbody id="page-perf-body"></tbody>
+        </table>
+    </div>
+    <div class="eff-card">
+        <h3>🎯 Competency Coverage</h3>
+        <table class="eff-table">
+            <thead>
+                <tr>
+                    <th>Competency</th>
+                    <th>Prepared</th>
+                    <th>Asked</th>
+                    <th>Gap</th>
+                </tr>
+            </thead>
+            <tbody id="competency-body"></tbody>
+        </table>
+    </div>
+    <div class="eff-card">
+        <h3>📅 Weekly Momentum</h3>
+        <table class="eff-table">
+            <thead>
+                <tr>
+                    <th>Week</th>
+                    <th>Apps</th>
+                    <th>Interviews</th>
+                    <th>Net</th>
+                </tr>
+            </thead>
+            <tbody id="momentum-body"></tbody>
+        </table>
+    </div>
+    <div class="eff-card">
+        <h3>⏱ Time Efficiency</h3>
+        <table class="eff-table">
+            <thead>
+                <tr>
+                    <th>Metric</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody id="time-eff-body"></tbody>
+        </table>
+    </div>
 </div>
 
 </main>
@@ -310,161 +180,376 @@ Your job search is a polynomial — many applications (terms), each with its own
 <script>
 (function () {
     'use strict';
+
     var yearEl = document.getElementById('copyright-year');
     if (yearEl) yearEl.textContent = new Date().getFullYear();
 
-    // ---------- Text Size Controls ----------
-    var LEVELS=[0.75,0.9,1,1.1,1.25,1.5,1.75,2];
-    var MIN_INDEX=0,MAX_INDEX=LEVELS.length-1,DEFAULT_INDEX=2;
-    var STORE_KEY_SIZE='vital-font-scale-index',STORE_KEY_THEME='vital-theme';
-    var btnIncrease=document.getElementById('font-increase');
-    var btnDecrease=document.getElementById('font-decrease');
-    var btnReset=document.getElementById('font-reset');
-    var display=document.getElementById('font-level-display');
-    var root=document.documentElement;
+    var LEVELS = [0.75, 0.9, 1, 1.1, 1.25, 1.5, 1.75, 2];
+    var MIN_INDEX = 0, MAX_INDEX = LEVELS.length - 1, DEFAULT_INDEX = 2;
+    var STORE_KEY_SIZE = 'vital-font-scale-index';
+    var STORE_KEY_THEME = 'vital-theme';
+    var btnIncrease = document.getElementById('font-increase');
+    var btnDecrease = document.getElementById('font-decrease');
+    var btnReset = document.getElementById('font-reset');
+    var display = document.getElementById('font-level-display');
+    var root = document.documentElement;
 
-    function clamp(n,lo,hi){return Math.min(hi,Math.max(lo,n));}
-    function getStoredIndex(){try{var raw=window.localStorage.getItem(STORE_KEY_SIZE);if(raw===null)return DEFAULT_INDEX;var n=parseInt(raw,10);return isNaN(n)?DEFAULT_INDEX:clamp(n,MIN_INDEX,MAX_INDEX);}catch(e){return DEFAULT_INDEX;}}
-    function applyScale(index,announce){index=clamp(index,MIN_INDEX,MAX_INDEX);var scale=LEVELS[index];root.style.setProperty('--font-scale',String(scale));document.body.style.fontSize=(scale*100)+'%';display.textContent=Math.round(scale*100)+'%';btnDecrease.disabled=(index===MIN_INDEX);btnIncrease.disabled=(index===MAX_INDEX);try{window.localStorage.setItem(STORE_KEY_SIZE,String(index));}catch(e){}if(announce)display.textContent=Math.round(scale*100)+'% text size';}
-
-    var currentIndex=getStoredIndex();applyScale(currentIndex,false);
-    btnIncrease.addEventListener('click',function(){currentIndex=clamp(currentIndex+1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);});
-    btnDecrease.addEventListener('click',function(){currentIndex=clamp(currentIndex-1,MIN_INDEX,MAX_INDEX);applyScale(currentIndex,true);});
-    btnReset.addEventListener('click',function(){currentIndex=DEFAULT_INDEX;applyScale(currentIndex,true);});
-
-    // ---------- Dark Mode Toggle ----------
-    var themeToggle=document.getElementById('theme-toggle');
-    function getPreferredTheme(){try{var stored=window.localStorage.getItem(STORE_KEY_THEME);if(stored==='dark'||stored==='light')return stored;}catch(e){}if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)return 'dark';return 'light';}
-    function applyTheme(theme,persist){if(theme==='dark'){root.setAttribute('data-theme','dark');themeToggle.setAttribute('aria-pressed','true');themeToggle.textContent='☀️ Light Mode';}else{root.removeAttribute('data-theme');themeToggle.setAttribute('aria-pressed','false');themeToggle.textContent='🌙 Dark Mode';}if(persist){try{window.localStorage.setItem(STORE_KEY_THEME,theme);}catch(e){}}}
-    var currentTheme=getPreferredTheme();applyTheme(currentTheme,false);
-    themeToggle.addEventListener('click',function(){currentTheme=(currentTheme==='dark')?'light':'dark';applyTheme(currentTheme,true);});
-})();
-
-/* ===== BOARD LOGIC ===== */
-(function(){
-    'use strict';
-    var STORAGE_KEY='jhb-entries';
-    var STATUS_ORDER=['application','screening','interview','offer','rejected','accepted'];
-    var LABELS={all:'All',application:'Applications',screening:'Screening',interview:'Interviews',offer:'Offers',rejected:'Rejected',accepted:'Accepted'};
-
-    function getEntries(){try{var raw=localStorage.getItem(STORAGE_KEY);var d=raw?JSON.parse(raw):[];return Array.isArray(d)?d:[];}catch(e){return[];}}
-    function saveEntries(d){try{localStorage.setItem(STORAGE_KEY,JSON.stringify(d));}catch(e){alert('Could not save — storage may be full or blocked.');}}
-
-    var entries=getEntries();
-    var activeFilter='all';
-
-    function fmt(n){return '$'+Number(n||0).toLocaleString();}
-    function fmtDate(d){if(!d)return'—';var dt=new Date(d+'T00:00:00');return isNaN(dt)?d:dt.toLocaleDateString('en-US',{month:'short',day:'numeric',year:'numeric'});}
-    function esc(s){var d=document.createElement('div');d.textContent=s==null?'':s;return d.innerHTML;}
-
-    function renderStats(){
-        var total=entries.length;
-        var active=entries.filter(function(e){return e.status!=='rejected'&&e.status!=='accepted';}).length;
-        var offers=entries.filter(function(e){return e.status==='offer'||e.status==='accepted';}).length;
-        var pending=entries.filter(function(e){return e.status==='offer'||e.status==='interview';}).reduce(function(s,e){return s+Number(e.salary||0);},0);
-        document.getElementById('stats-row').innerHTML=
-            '<div class="stat-card blue"><div class="stat-value">'+total+'</div><div class="stat-label">Total Applications</div></div>'+
-            '<div class="stat-card orange"><div class="stat-value">'+active+'</div><div class="stat-label">Active Pipeline</div></div>'+
-            '<div class="stat-card green"><div class="stat-value">'+offers+'</div><div class="stat-label">Offers / Accepted</div></div>'+
-            '<div class="stat-card green"><div class="stat-value">'+fmt(pending)+'</div><div class="stat-label">Pending Salary</div></div>';
+    function clamp(n, lo, hi) { return Math.min(hi, Math.max(lo, n)); }
+    function getStoredIndex() {
+        try {
+            var raw = localStorage.getItem(STORE_KEY_SIZE);
+            if (raw === null) return DEFAULT_INDEX;
+            var n = parseInt(raw, 10);
+            return isNaN(n) ? DEFAULT_INDEX : clamp(n, MIN_INDEX, MAX_INDEX);
+        } catch (e) { return DEFAULT_INDEX; }
+    }
+    function applyScale(index, announce) {
+        index = clamp(index, MIN_INDEX, MAX_INDEX);
+        var scale = LEVELS[index];
+        root.style.setProperty('--font-scale', String(scale));
+        display.textContent = Math.round(scale * 100) + '%';
+        btnDecrease.disabled = (index === MIN_INDEX);
+        btnIncrease.disabled = (index === MAX_INDEX);
+        try { localStorage.setItem(STORE_KEY_SIZE, String(index)); } catch (e) {}
     }
 
-    function renderPipeline(){
-        var counts={};STATUS_ORDER.forEach(function(s){counts[s]=0;});
-        entries.forEach(function(e){if(counts[e.status]!==undefined)counts[e.status]++;});
-        document.getElementById('pipeline').innerHTML=STATUS_ORDER.map(function(s){
-            return '<div class="pipeline-segment '+s+'"><span class="p-count">'+counts[s]+'</span>'+LABELS[s]+'</div>';
+    var currentIndex = getStoredIndex();
+    applyScale(currentIndex, false);
+
+    btnIncrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex + 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+    btnDecrease.addEventListener('click', function () {
+        currentIndex = clamp(currentIndex - 1, MIN_INDEX, MAX_INDEX);
+        applyScale(currentIndex, true);
+    });
+    btnReset.addEventListener('click', function () {
+        currentIndex = DEFAULT_INDEX;
+        applyScale(currentIndex, true);
+    });
+
+    var themeToggle = document.getElementById('theme-toggle');
+    function getPreferredTheme() {
+        try {
+            var stored = localStorage.getItem(STORE_KEY_THEME);
+            if (stored === 'dark' || stored === 'light') return stored;
+        } catch (e) {}
+        if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) return 'dark';
+        return 'light';
+    }
+    function applyTheme(theme, persist) {
+        if (theme === 'dark') {
+            root.setAttribute('data-theme', 'dark');
+            themeToggle.setAttribute('aria-pressed', 'true');
+            themeToggle.textContent = '☀️ Light Mode';
+        } else {
+            root.removeAttribute('data-theme');
+            themeToggle.setAttribute('aria-pressed', 'false');
+            themeToggle.textContent = '🌙 Dark Mode';
+        }
+        if (persist) { try { localStorage.setItem(STORE_KEY_THEME, theme); } catch (e) {} }
+    }
+    var currentTheme = getPreferredTheme();
+    applyTheme(currentTheme, false);
+    themeToggle.addEventListener('click', function () {
+        currentTheme = (currentTheme === 'dark') ? 'light' : 'dark';
+        applyTheme(currentTheme, true);
+    });
+
+    function restoreFinancials() {
+        try {
+            var raw = localStorage.getItem('jhb-financials');
+            if (raw) {
+                var data = JSON.parse(raw);
+                document.getElementById('f-burn').value = data.burn || '';
+                document.getElementById('f-savings').value = data.savings || '';
+            }
+        } catch (e) {}
+    }
+    function saveFinancials() {
+        var burnData = { burn: document.getElementById('f-burn').value, savings: document.getElementById('f-savings').value };
+        localStorage.setItem('jhb-financials', JSON.stringify(burnData));
+    }
+
+    function fmt(n) { return '$' + Number(n || 0).toLocaleString(); }
+    function fmtDate(d) {
+        if (!d) return '—';
+        var dt = new Date(d + 'T00:00:00');
+        return isNaN(dt) ? d : dt.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' });
+    }
+    function esc(s) {
+        var d = document.createElement('div');
+        d.textContent = s == null ? '' : s;
+        return d.innerHTML;
+    }
+    function parsePages(text) {
+        if (!text) return [];
+        return text.split('\n').map(function (line) { return line.trim(); }).filter(function (line) { return line.length > 0; });
+    }
+    function extractDomain(url) {
+        try {
+            var u = url.startsWith('http') ? url : 'http://' + url;
+            return new URL(u).hostname.replace('www.', '');
+        } catch (e) { return url.substring(0, 30); }
+    }
+    function getWeekNumber(d) {
+        var date = new Date(d);
+        date.setHours(0, 0, 0, 0);
+        date.setDate(date.getDate() + 3 - (date.getDay() + 6) % 7);
+        var week1 = new Date(date.getFullYear(), 0, 4);
+        return 1 + Math.round(((date - week1) / 86400000 - 3 + (week1.getDay() + 6) % 7) / 7);
+    }
+
+    var STORAGE_KEY = 'jhb-entries';
+    var STATUS_ORDER = ['application', 'screening', 'interview', 'offer', 'rejected', 'accepted'];
+    var LABELS = { all: 'All', application: 'Applications', screening: 'Screening', interview: 'Interviews', offer: 'Offers', rejected: 'Rejected', accepted: 'Accepted' };
+
+    function getEntries() {
+        try {
+            var raw = localStorage.getItem(STORAGE_KEY);
+            var d = raw ? JSON.parse(raw) : [];
+            return Array.isArray(d) ? d : [];
+        } catch (e) { return []; }
+    }
+    function saveEntries(d) {
+        try { localStorage.setItem(STORAGE_KEY, JSON.stringify(d)); }
+        catch (e) { alert('Could not save — storage may be full or blocked.'); }
+    }
+
+    var entries = getEntries();
+    var activeFilter = 'all';
+
+    function renderStats() {
+        var total = entries.length;
+        var interviews = entries.filter(function (e) { return e.status === 'interview' || e.status === 'screening'; }).length;
+        var offers = entries.filter(function (e) { return e.status === 'offer' || e.status === 'accepted'; }).length;
+        var accepted = entries.filter(function (e) { return e.status === 'accepted'; }).length;
+        var acceptedSalary = entries.filter(function (e) { return e.status === 'accepted'; }).reduce(function (s, e) { return s + Number(e.salary || 0); }, 0);
+        var burn = Number(document.getElementById('f-burn').value || 0);
+        var savings = Number(document.getElementById('f-savings').value || 0);
+        var appToInterview = total > 0 ? ((interviews / total) * 100).toFixed(1) : '0';
+        var runway = burn > 0 ? (savings / burn).toFixed(1) : '∞';
+        var expectedEarnings = interviews > 0 ? ((offers / interviews) * burn) : 0;
+
+        document.getElementById('burn-value').textContent = '$' + burn.toLocaleString();
+        document.getElementById('runway-value').textContent = runway + (runway === '∞' ? '' : ' mo');
+        document.getElementById('conversion-value').textContent = appToInterview + '%';
+        document.getElementById('expected-value').textContent = '$' + Math.round(expectedEarnings).toLocaleString();
+
+        var runwayCard = document.getElementById('runway-value').parentElement;
+        runwayCard.className = 'stat-card';
+        if (burn > 0) {
+            var months = savings / burn;
+            if (months < 6) runwayCard.classList.add('red');
+            else if (months < 12) runwayCard.classList.add('orange');
+            else runwayCard.classList.add('green');
+        }
+    }
+
+    function renderPipeline() {
+        var counts = {};
+        STATUS_ORDER.forEach(function (s) { counts[s] = 0; });
+        entries.forEach(function (e) { if (counts[e.status] !== undefined) counts[e.status]++; });
+        document.getElementById('pipeline').innerHTML = STATUS_ORDER.map(function (s) {
+            return '<div class="pipeline-segment ' + s + '"><span class="p-count">' + counts[s] + '</span>' + LABELS[s] + '</div>';
         }).join('');
     }
 
-    function renderFilters(){
-        var filters=['all'].concat(STATUS_ORDER);
-        document.getElementById('filter-bar').innerHTML=filters.map(function(f){
-            return '<button type="button" class="filter-btn'+(f===activeFilter?' active':'')+'" data-f="'+f+'">'+LABELS[f]+'</button>';
+    function renderFilters() {
+        var filters = ['all'].concat(STATUS_ORDER);
+        document.getElementById('filter-bar').innerHTML = filters.map(function (f) {
+            return '<button type="button" class="filter-btn' + (f === activeFilter ? ' active' : '') + '" data-f="' + f + '">' + LABELS[f] + '</button>';
         }).join('');
-        document.querySelectorAll('.filter-btn').forEach(function(btn){
-            btn.addEventListener('click',function(){
-                activeFilter=this.getAttribute('data-f');
-                document.querySelectorAll('.filter-btn').forEach(function(b){b.classList.remove('active');});
+        document.querySelectorAll('.filter-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                activeFilter = this.getAttribute('data-f');
+                document.querySelectorAll('.filter-btn').forEach(function (b) { b.classList.remove('active'); });
                 this.classList.add('active');
                 renderTable();
+                renderEfficiency();
             });
         });
     }
 
-    function renderTable(){
-        var filtered=activeFilter==='all'?entries.slice():entries.filter(function(e){return e.status===activeFilter;});
-        filtered.sort(function(a,b){return String(b.date||'').localeCompare(String(a.date||''));});
-        var tbody=document.getElementById('entries-body');
-        if(filtered.length===0){
-            tbody.innerHTML='<tr><td colspan="7" class="empty-state">No entries yet. Add your first application above.</td></tr>';
+    function renderTable() {
+        var filtered = activeFilter === 'all' ? entries.slice() : entries.filter(function (e) { return e.status === activeFilter; });
+        filtered.sort(function (a, b) { return String(b.date || '').localeCompare(String(a.date || '')); });
+        var tbody = document.getElementById('entries-body');
+        if (filtered.length === 0) {
+            tbody.innerHTML = '<tr><td colspan="8" class="empty-state">No entries yet. Add your first application above.</td></tr>';
             return;
         }
-        tbody.innerHTML=filtered.map(function(e){
-            var idx=entries.indexOf(e);
-            return '<tr>'+
-                '<td><strong>'+esc(e.company)+'</strong></td>'+
-                '<td>'+esc(e.role)+'</td>'+
-                '<td><span class="status-badge '+esc(e.status)+'">'+esc(e.status)+'</span></td>'+
-                '<td>'+(e.salary?fmt(e.salary):'—')+'</td>'+
-                '<td>'+fmtDate(e.date)+'</td>'+
-                '<td>'+esc(e.notes||'')+'</td>'+
-                '<td><button type="button" class="delete-btn" data-idx="'+idx+'" aria-label="Remove entry">✕</button></td>'+
+        tbody.innerHTML = filtered.map(function (e) {
+            var idx = entries.indexOf(e);
+            var pages = parsePages(e.pages || '');
+            var pageTags = pages.slice(0, 3).map(function (p) {
+                var domain = extractDomain(p);
+                return '<span class="support-tag">' + esc(domain) + '</span>';
+            }).join('');
+            return '<tr>' +
+                '<td><strong>' + esc(e.company) + '</strong></td>' +
+                '<td>' + esc(e.role) + '</td>' +
+                '<td><span class="status-badge ' + esc(e.status) + '">' + esc(e.status) + '</span></td>' +
+                '<td>' + (e.salary ? fmt(e.salary) : '—') + '</td>' +
+                '<td>' + fmtDate(e.date) + '</td>' +
+                '<td>' + pageTags + '</td>' +
+                '<td>' + esc(e.notes || '') + '</td>' +
+                '<td><button type="button" class="delete-btn" data-idx="' + idx + '" aria-label="Remove entry">✕</button></td>' +
                 '</tr>';
         }).join('');
-        document.querySelectorAll('.delete-btn').forEach(function(btn){
-            btn.addEventListener('click',function(){
-                var i=parseInt(this.getAttribute('data-idx'),10);
-                if(confirm('Remove "'+entries[i].company+' — '+entries[i].role+'"?')){
-                    entries.splice(i,1);saveEntries(entries);renderAll();
+        document.querySelectorAll('.delete-btn').forEach(function (btn) {
+            btn.addEventListener('click', function () {
+                var i = parseInt(this.getAttribute('data-idx'), 10);
+                if (confirm('Remove "' + entries[i].company + ' — ' + entries[i].role + '"?')) {
+                    entries.splice(i, 1);
+                    saveEntries(entries);
+                    renderAll();
                 }
             });
         });
     }
 
-    function renderAll(){renderStats();renderPipeline();renderFilters();renderTable();}
-
-    document.getElementById('add-form').addEventListener('submit',function(e){
-        e.preventDefault();
-        var company=document.getElementById('f-company').value.trim();
-        var role=document.getElementById('f-role').value.trim();
-        if(!company||!role)return;
-        entries.push({
-            company:company,
-            role:role,
-            status:document.getElementById('f-status').value,
-            salary:document.getElementById('f-salary').value,
-            date:document.getElementById('f-date').value,
-            notes:document.getElementById('f-notes').value.trim()
+    function renderEfficiency() {
+        var pageStats = {};
+        entries.forEach(function (e) {
+            var pages = parsePages(e.pages || '');
+            pages.forEach(function (page) {
+                var domain = extractDomain(page);
+                var key = domain + '|||' + page.substring(0, 50);
+                if (!pageStats[key]) pageStats[key] = { label: domain, fullUrl: page, apps: 0, interviews: 0 };
+                pageStats[key].apps++;
+                if (e.status === 'interview' || e.status === 'screening') pageStats[key].interviews++;
+            });
         });
-        saveEntries(entries);renderAll();this.reset();
+        var sortedPages = Object.values(pageStats).sort(function (a, b) {
+            return (b.interviews / b.apps || 0) - (a.interviews / a.apps || 0);
+        }).slice(0, 8);
+        var maxRate = sortedPages.length > 0 ? sortedPages[0].interviews / sortedPages[0].apps : 0.01;
+
+        document.getElementById('page-perf-body').innerHTML = sortedPages.length === 0
+            ? '<tr><td colspan="5" style="text-align:center;color:var(--text-muted);padding:20px;">Add supporting pages to entries to see performance</td></tr>'
+            : sortedPages.map(function (p, i) {
+                var rate = (p.interviews / p.apps * 100).toFixed(1);
+                var barWidth = (p.interviews / p.apps / maxRate * 100).toFixed(0);
+                var barClass = barWidth > 50 ? 'high' : barWidth > 25 ? 'medium' : 'low';
+                var rankClass = i === 0 ? 'rank-1' : i === 1 ? 'rank-2' : i === 2 ? 'rank-3' : '';
+                return '<tr>' +
+                    '<td class="' + rankClass + '">' + esc(p.label) + '</td>' +
+                    '<td>' + p.apps + '</td>' +
+                    '<td>' + p.interviews + '</td>' +
+                    '<td>' + rate + '%</td>' +
+                    '<td class="bar-cell"><span class="eff-bar"><span class="eff-bar-fill ' + barClass + '" style="width:' + barWidth + '%"></span></span></td>' +
+                    '</tr>';
+            }).join('');
+
+        var weekData = {};
+        entries.forEach(function (e) {
+            if (!e.date) return;
+            var wn = getWeekNumber(e.date);
+            var yr = new Date(e.date + 'T00:00:00').getFullYear();
+            var key = yr + '-W' + wn;
+            if (!weekData[key]) weekData[key] = { week: key, apps: 0, interviews: 0 };
+            weekData[key].apps++;
+            if (e.status === 'interview' || e.status === 'screening') weekData[key].interviews++;
+        });
+        var weeks = Object.values(weekData).sort(function (a, b) { return b.week.localeCompare(a.week); }).slice(0, 8);
+
+        document.getElementById('momentum-body').innerHTML = weeks.length === 0
+            ? '<tr><td colspan="4" style="text-align:center;color:var(--text-muted);padding:20px;">No date-tracking data yet</td></tr>'
+            : weeks.map(function (w) {
+                var net = w.apps - w.interviews;
+                var netClass = net > 0 ? 'color:var(--warning)' : net < 0 ? 'color:var(--success)' : '';
+                return '<tr>' +
+                    '<td>' + w.week + '</td>' +
+                    '<td>' + w.apps + '</td>' +
+                    '<td>' + w.interviews + '</td>' +
+                    '<td style="' + netClass + '">' + (net > 0 ? '+' : '') + net + '</td>' +
+                    '</tr>';
+            }).join('');
+
+        var totalApps = entries.length;
+        var totalInterviews = entries.filter(function (e) { return e.status === 'interview' || e.status === 'screening'; }).length;
+        var totalOffers = entries.filter(function (e) { return e.status === 'offer' || e.status === 'accepted'; }).length;
+        var totalAccepted = entries.filter(function (e) { return e.status === 'accepted'; }).length;
+        var acceptedSalary = entries.filter(function (e) { return e.status === 'accepted'; }).reduce(function (s, e) { return s + Number(e.salary || 0); }, 0);
+        var burn = Number(document.getElementById('f-burn').value || 0);
+        var savings = Number(document.getElementById('f-savings').value || 0);
+        var runway = burn > 0 ? (savings / burn).toFixed(1) : '∞';
+        var dates = entries.filter(function (e) { return e.date; }).map(function (e) { return new Date(e.date); }).sort(function (a, b) { return a - b; });
+        var daysActive = dates.length > 0 ? Math.max(1, Math.floor((new Date() - dates[0]) / 86400000)) : 1;
+        var appsPerDay = (totalApps / daysActive).toFixed(1);
+        var interviewPerDay = (totalInterviews / daysActive).toFixed(2);
+
+        document.getElementById('time-eff-body').innerHTML =
+            '<tr><td>Days Active</td><td>' + daysActive + '</td></tr>' +
+            '<tr><td>Apps / Day</td><td>' + appsPerDay + '</td></tr>' +
+            '<tr><td>Interviews / Day</td><td>' + interviewPerDay + '</td></tr>' +
+            '<tr><td>App → Interview</td><td>' + (totalApps > 0 ? (totalInterviews / totalApps * 100).toFixed(1) : '0') + '%</td></tr>' +
+            '<tr><td>Interview → Offer</td><td>' + (totalInterviews > 0 ? (totalOffers / totalInterviews * 100).toFixed(1) : '0') + '%</td></tr>' +
+            '<tr><td>Runway</td><td>' + runway + ' months</td></tr>' +
+            '<tr><td>Accepted Salary</td><td>' + (totalAccepted > 0 ? fmt(acceptedSalary) : 'None yet') + '</td></tr>';
+    }
+
+    function renderAll() {
+        renderStats();
+        renderPipeline();
+        renderFilters();
+        renderTable();
+        renderEfficiency();
+        restoreFinancials();
+    }
+
+    document.getElementById('add-form').addEventListener('submit', function (e) {
+        e.preventDefault();
+        var company = document.getElementById('f-company').value.trim();
+        var role = document.getElementById('f-role').value.trim();
+        if (!company || !role) return;
+        entries.push({
+            company: company,
+            role: role,
+            status: document.getElementById('f-status').value,
+            salary: document.getElementById('f-salary').value,
+            date: document.getElementById('f-date').value,
+            pages: document.getElementById('f-pages').value.trim(),
+            notes: document.getElementById('f-notes').value.trim()
+        });
+        saveEntries(entries);
+        saveFinancials();
+        renderAll();
+        this.reset();
     });
 
-    /* ===== EXPORT / IMPORT ===== */
-    document.getElementById('export-btn').addEventListener('click',function(){
-        var blob=new Blob([JSON.stringify(entries,null,2)],{type:'application/json'});
-        var url=URL.createObjectURL(blob);
-        var a=document.createElement('a');
-        a.href=url;a.download='job-hunt-board-'+new Date().toISOString().slice(0,10)+'.json';
-        document.body.appendChild(a);a.click();document.body.removeChild(a);
+    document.getElementById('export-btn').addEventListener('click', function () {
+        var blob = new Blob([JSON.stringify(entries, null, 2)], { type: 'application/json' });
+        var url = URL.createObjectURL(blob);
+        var a = document.createElement('a');
+        a.href = url;
+        a.download = 'job-hunt-board-' + new Date().toISOString().slice(0, 10) + '.json';
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
         URL.revokeObjectURL(url);
     });
 
-    var fileInput=document.getElementById('import-file');
-    document.getElementById('import-btn').addEventListener('click',function(){fileInput.click();});
-    fileInput.addEventListener('change',function(){
-        var file=this.files[0];if(!file)return;
-        var reader=new FileReader();
-        reader.onload=function(ev){
-            try{
-                var data=JSON.parse(ev.target.result);
-                if(!Array.isArray(data))throw new Error('Not an array');
-                if(!confirm('Replace current board with '+data.length+' imported entries?'))return;
-                entries=data;saveEntries(entries);renderAll();
-            }catch(err){alert('Invalid JSON file: '+err.message);}
+    var fileInput = document.getElementById('import-file');
+    document.getElementById('import-btn').addEventListener('click', function () { fileInput.click(); });
+    fileInput.addEventListener('change', function () {
+        var file = this.files[0];
+        if (!file) return;
+        var reader = new FileReader();
+        reader.onload = function (ev) {
+            try {
+                var data = JSON.parse(ev.target.result);
+                if (!Array.isArray(data)) throw new Error('Not an array');
+                if (!confirm('Replace current board with ' + data.length + ' imported entries?')) return;
+                entries = data;
+                saveEntries(entries);
+                renderAll();
+            } catch (err) { alert('Invalid JSON file: ' + err.message); }
         };
         reader.readAsText(file);
-        this.value='';
+        this.value = '';
     });
 
     renderAll();
