@@ -3,183 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
 <title>Interview Prep Vault | V.I.T.A.L. Frameworks</title>
-
-<meta name="description"
-content="Master behavioral interviews with STAR method tracking, competency tagging, and Echo Mode practice drills.">
-
-<style>
-
-:root{
-    --primary:#2563eb;
-    --secondary:#1d4ed8;
-    --success:#059669;
-    --warning:#d97706;
-    --danger:#dc2626;
-    --info:#0891b2;
-    --light:#f8fafc;
-    --border:#e5e7eb;
-    --bg-body:#f9fafb;
-    --bg-card:#ffffff;
-    --text-main:#111827;
-    --text-muted:#4b5563;
-    --footer-text:#6b7280;
-    --shadow:rgba(0,0,0,.08);
-    --font-scale:1;
-}
-
-[data-theme="dark"]{
-    --primary:#58a6ff;
-    --secondary:#79b8ff;
-    --success:#3fb950;
-    --warning:#d29922;
-    --danger:#f85149;
-    --info:#22d3ee;
-    --light:#161b22;
-    --border:#30363d;
-    --bg-body:#0d1117;
-    --bg-card:#161b22;
-    --text-main:#f0f6fc;
-    --text-muted:#8b949e;
-    --footer-text:#8b949e;
-    --shadow:rgba(0,0,0,.4);
-}
-
-*{box-sizing:border-box;}
-
-body{
-    margin:0;
-    font-family:Segoe UI, Arial, sans-serif;
-    background:var(--bg-body);
-    color:var(--text-main);
-    transition:background .3s, color .3s;
-}
-
-.skip-link{
-    position:absolute;top:-60px;left:0;background:var(--primary);color:#fff;
-    padding:10px 16px;z-index:1000;text-decoration:none;border-radius:0 0 8px 0;transition:top .2s;
-}
-.skip-link:focus{top:0;}
-
-.sr-only{
-    position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
-    clip:rect(0,0,0,0);white-space:nowrap;border:0;
-}
-
-.a11y-bar{
-    display:flex;flex-wrap:wrap;align-items:center;justify-content:center;gap:10px;
-    background:var(--bg-card);border-bottom:1px solid var(--border);padding:10px 16px;
-    position:sticky;top:0;z-index:900;
-}
-.a11y-group{display:flex;align-items:center;gap:6px;}
-.a11y-label{font-size:.85rem;font-weight:600;color:var(--text-muted);margin-right:4px;}
-.a11y-btn{
-    min-width:40px;min-height:40px;padding:8px 12px;font-size:1rem;font-weight:600;
-    border:2px solid var(--border);border-radius:6px;background:var(--bg-body);
-    color:var(--text-main);cursor:pointer;transition:background .2s,border-color .2s;
-}
-.a11y-btn:hover{border-color:var(--primary);}
-.a11y-btn:focus-visible{outline:3px solid var(--primary);outline-offset:2px;}
-.a11y-btn[aria-pressed="true"]{background:var(--primary);color:#fff;border-color:var(--primary);}
-.a11y-btn:disabled{opacity:.45;cursor:not-allowed;}
-#font-level-display{font-size:.85rem;color:var(--text-muted);min-width:44px;text-align:center;}
-
-.hero{
-    max-width:1200px;margin:24px auto 0;padding:40px 25px;background:var(--bg-card);
-    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);text-align:center;
-}
-.hero h1{margin:0;font-size:calc(2.4rem * var(--font-scale));color:var(--primary);}
-.hero p{font-size:calc(1.1rem * var(--font-scale));color:var(--text-muted);margin-top:15px;}
-
-.site-nav{
-    max-width:1200px;margin:16px auto 0;padding:12px 20px;background:var(--bg-card);
-    border:1px solid var(--border);border-radius:12px;box-shadow:0 2px 8px var(--shadow);
-}
-.site-nav ul{list-style:none;margin:0 auto;padding:0;display:flex;flex-wrap:wrap;gap:8px;justify-content:center;}
-.site-nav a{
-    display:inline-block;padding:10px 14px;text-decoration:none;color:var(--primary);
-    font-weight:600;border-radius:6px;font-size:calc(1rem * var(--font-scale));
-}
-.site-nav a:hover,.site-nav a:focus-visible{background:var(--primary);color:#fff;outline:none;}
-.site-nav a[aria-current="page"]{background:var(--primary);color:#fff;}
-
-.container{max-width:1200px;margin:auto;padding:40px 20px;}
-
-.progress-box{
-    background:var(--bg-card);padding:25px;border-radius:12px;margin-bottom:40px;
-    box-shadow:0 2px 8px var(--shadow);border:1px solid var(--border);
-}
-.progress-box h2{margin-top:0;font-size:calc(1.6rem * var(--font-scale));}
-.progress-box p,.progress-box li{font-size:calc(1rem * var(--font-scale));}
-
-.section-heading{
-    font-size:calc(1.6rem * var(--font-scale));color:var(--primary);
-    margin:50px 0 20px;padding-bottom:10px;border-bottom:2px solid var(--border);
-}
-.section-intro{
-    color:var(--text-muted);font-size:calc(1rem * var(--font-scale));margin:-10px 0 25px;
-}
-
-/* ===== Form Styles ===== */
-.add-form{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:25px;margin-bottom:30px;box-shadow:0 2px 8px var(--shadow);}
-.add-form h2{margin-top:0;font-size:calc(1.4rem * var(--font-scale));color:var(--primary);}
-.form-row{display:flex;flex-wrap:wrap;gap:12px;margin-bottom:12px;}
-.form-row label{display:flex;flex-direction:column;font-size:calc(.85rem * var(--font-scale));font-weight:600;color:var(--text-muted);flex:1;min-width:150px;}
-.form-row input,.form-row select,.form-row textarea{padding:10px 12px;font-size:calc(.95rem * var(--font-scale));border:1px solid var(--border);border-radius:6px;background:var(--bg-body);color:var(--text-main);font-family:inherit;}
-.form-row textarea{min-height:100px;resize:vertical;}
-.form-row input:focus,.form-row select:focus,.form-row textarea:focus{outline:none;border-color:var(--primary);box-shadow:0 0 0 3px rgba(37,99,235,.2);}
-.add-btn{padding:12px 24px;background:var(--primary);color:#fff;border:none;border-radius:6px;font-size:calc(1rem * var(--font-scale));font-weight:700;cursor:pointer;transition:background .2s;}
-.add-btn:hover{background:var(--secondary);}
-
-/* ===== Card Grid for Answers ===== */
-.answer-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:20px;}
-.answer-card{background:var(--bg-card);border:1px solid var(--border);border-radius:12px;padding:20px;box-shadow:0 2px 8px var(--shadow);display:flex;flex-direction:column;}
-.answer-card h3{margin-top:0;color:var(--primary);font-size:calc(1.1rem * var(--font-scale));}
-.tag-badge{display:inline-block;padding:2px 8px;border-radius:12px;font-size:.75rem;font-weight:700;text-transform:uppercase;margin-bottom:8px;}
-.tag-leadership{background:rgba(37,99,235,.12);color:var(--primary);}
-.tag-conflict{background:rgba(220,38,38,.12);color:var(--danger);}
-.tag-failure{background:rgba(217,119,6,.12);color:var(--warning);}
-.tag-success{background:rgba(5,150,105,.12);color:var(--success);}
-.tag-other{background:rgba(107,114,128,.12);color:var(--footer-text);}
-
-.star-section{margin-bottom:10px;}
-.star-label{font-size:.75rem;font-weight:700;color:var(--text-muted);text-transform:uppercase;display:block;margin-bottom:2px;}
-.star-text{font-size:calc(.9rem * var(--font-scale));line-height:1.5;color:var(--text-main);}
-
-.card-actions{margin-top:auto;padding-top:15px;display:flex;gap:8px;}
-.practice-btn{flex:1;padding:8px;background:var(--info);color:#fff;border:none;border-radius:4px;cursor:pointer;font-weight:600;font-size:.9rem;}
-.delete-btn{padding:8px 12px;background:transparent;border:1px solid var(--danger);color:var(--danger);border-radius:4px;cursor:pointer;font-weight:600;font-size:.9rem;}
-.delete-btn:hover{background:rgba(220,38,38,.1);}
-
-/* ===== Practice Modal ===== */
-.modal-overlay{
-    position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,.8);
-    z-index:2000;display:none;align-items:center;justify-content:center;padding:20px;
-}
-.modal-overlay.active{display:flex;}
-.modal-content{
-    background:var(--bg-card);border-radius:12px;padding:40px;max-width:600px;width:100%;
-    text-align:center;position:relative;box-shadow:0 10px 25px rgba(0,0,0,.2);
-}
-.modal-question{font-size:calc(1.5rem * var(--font-scale));font-weight:700;margin-bottom:20px;color:var(--primary);}
-.modal-hint{font-size:calc(1rem * var(--font-scale));color:var(--text-muted);margin-bottom:30px;}
-.reveal-btn{padding:12px 30px;background:var(--success);color:#fff;border:none;border-radius:6px;font-size:1.1rem;font-weight:700;cursor:pointer;}
-.close-modal{position:absolute;top:15px;right:20px;background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--text-muted);}
-
-footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px solid var(--border);margin-top:40px;}
-
-@media(prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important;}}
-@media print{.a11y-bar,.site-nav,.add-form,.card-actions,.modal-overlay{display:none;}}
-
-</style>
+<meta name="description" content="Master behavioral interviews with STAR method tracking, competency tagging, and Echo Mode practice drills.">
+<link rel="stylesheet" href="styles.css">
 </head>
-
 <body>
 
 <a href="#main-content" class="skip-link">Skip to main content</a>
 
-<!-- ===== Accessibility Toolbar ===== -->
 <div class="a11y-bar" role="toolbar" aria-label="Display and accessibility settings">
     <div class="a11y-group" role="group" aria-label="Text size controls">
         <span class="a11y-label" id="font-label">Text Size</span>
@@ -193,7 +24,6 @@ footer{text-align:center;padding:40px;color:var(--footer-text);border-top:1px so
     </div>
 </div>
 
-<!-- ==== Top Navigation === -->
 <div id="site-nav" class="site-nav" aria-label="Primary"></div>
 <script src="nav.js"></script>
 
@@ -239,20 +69,16 @@ Behavioral interviews are predictable. By preparing structured STAR (Situation, 
 </div>
 
 <h2 class="section-heading" id="vault-heading">Your Vault</h2>
-<div class="answer-grid" id="answer-grid">
-    <!-- Cards injected here -->
-</div>
+<div class="answer-grid" id="answer-grid"></div>
 
 </main>
 
-<!-- Practice Modal -->
 <div class="modal-overlay" id="practice-modal">
     <div class="modal-content">
         <button class="close-modal" id="close-modal">&times;</button>
         <h2 class="modal-question" id="modal-q">Question?</h2>
         <p class="modal-hint">Speak your answer out loud using the STAR method.<br>Take your time. Then reveal to check.</p>
         <button class="reveal-btn" id="reveal-btn">Reveal Answer</button>
-        
         <div id="modal-answer-view" style="display:none; text-align:left; margin-top:20px;">
             <div class="star-section"><span class="star-label">Situation/Task</span><div class="star-text" id="m-st"></div></div>
             <div class="star-section"><span class="star-label">Action</span><div class="star-text" id="m-a"></div></div>
@@ -267,234 +93,6 @@ Behavioral interviews are predictable. By preparing structured STAR (Situation, 
 <p class="copyright">&copy; <span id="copyright-year">2026</span> V.I.T.A.L. Frameworks. All rights reserved.</p>
 </footer>
 
-<script>
-(function () {
-    'use strict';
-
-    // ---------- Copyright Year ----------
-    var yearEl = document.getElementById('copyright-year');
-    if (yearEl) yearEl.textContent = new Date().getFullYear();
-
-    // ---------- Text Size Controls ----------
-    var LEVELS=[0.75,0.9,1,1.1,1.25,1.5,1.75,2];
-    var MIN_INDEX=0,MAX_INDEX=LEVELS.length-1,DEFAULT_INDEX=2;
-    var STORE_KEY_SIZE='vital-font-scale-index',STORE_KEY_THEME='vital-theme';
-    var btnIncrease=document.getElementById('font-increase');
-    var btnDecrease=document.getElementById('font-decrease');
-    var btnReset=document.getElementById('font-reset');
-    var display=document.getElementById('font-level-display');
-    var root=document.documentElement;
-
-    function clamp(n,lo,hi){return Math.min(hi,Math.max(lo,n));}
-    function getStoredIndex(){try{var raw=localStorage.getItem(STORE_KEY_SIZE);if(raw===null)return DEFAULT_INDEX;var n=parseInt(raw,10);return isNaN(n)?DEFAULT_INDEX:clamp(n,MIN_INDEX,MAX_INDEX);}catch(e){return DEFAULT_INDEX;}}
-    function applyScale(index,announce){
-        index=clamp(index,MIN_INDEX,MAX_INDEX);
-        var scale=LEVELS[index];
-        root.style.setProperty('--font-scale',String(scale));
-        display.textContent=Math.round(scale*100)+'%';
-        btnDecrease.disabled=(index===MIN_INDEX);
-        btnIncrease.disabled=(index===MAX_INDEX);
-        try{localStorage.setItem(STORE_KEY_SIZE,String(index));}catch(e){}
-        if(announce) display.textContent=Math.round(scale*100)+'% text size';
-    }
-
-    var currentIndex=getStoredIndex();
-    applyScale(currentIndex,false);
-
-    btnIncrease.addEventListener('click',function(){
-        currentIndex=clamp(currentIndex+1,MIN_INDEX,MAX_INDEX);
-        applyScale(currentIndex,true);
-    });
-    btnDecrease.addEventListener('click',function(){
-        currentIndex=clamp(currentIndex-1,MIN_INDEX,MAX_INDEX);
-        applyScale(currentIndex,true);
-    });
-    btnReset.addEventListener('click',function(){
-        currentIndex=DEFAULT_INDEX;
-        applyScale(currentIndex,true);
-    });
-
-    // ---------- Dark Mode Toggle ----------
-    var themeToggle=document.getElementById('theme-toggle');
-    function getPreferredTheme(){
-        try{var stored=localStorage.getItem(STORE_KEY_THEME);if(stored==='dark'||stored==='light')return stored;}catch(e){}
-        if(window.matchMedia&&window.matchMedia('(prefers-color-scheme: dark)').matches)return 'dark';
-        return 'light';
-    }
-    function applyTheme(theme,persist){
-        if(theme==='dark'){
-            root.setAttribute('data-theme','dark');
-            themeToggle.setAttribute('aria-pressed','true');
-            themeToggle.textContent='☀️ Light Mode';
-        }else{
-            root.removeAttribute('data-theme');
-            themeToggle.setAttribute('aria-pressed','false');
-            themeToggle.textContent='🌙 Dark Mode';
-        }
-        if(persist){try{localStorage.setItem(STORE_KEY_THEME,theme);}catch(e){}}
-    }
-    var currentTheme=getPreferredTheme();
-    applyTheme(currentTheme,false);
-    themeToggle.addEventListener('click',function(){
-        currentTheme=(currentTheme==='dark')?'light':'dark';
-        applyTheme(currentTheme,true);
-    });
-})();
-
-/* ===== VAULT LOGIC ===== */
-(function(){
-    'use strict';
-    var STORAGE_KEY='vital-interview-answers';
-    var TAG_LABELS={
-        leadership:'Leadership',
-        conflict:'Conflict Resolution',
-        failure:'Failure / Mistake',
-        success:'Success / Achievement',
-        other:'Other'
-    };
-    var TAG_CLASSES={
-        leadership:'tag-leadership',
-        conflict:'tag-conflict',
-        failure:'tag-failure',
-        success:'tag-success',
-        other:'tag-other'
-    };
-
-    function getAnswers(){
-        try{
-            var raw=localStorage.getItem(STORAGE_KEY);
-            var d=raw?JSON.parse(raw):[];
-            return Array.isArray(d)?d:[];
-        }catch(e){return[];}
-    }
-    function saveAnswers(d){
-        try{localStorage.setItem(STORAGE_KEY,JSON.stringify(d));}
-        catch(e){alert('Could not save — storage may be full or blocked.');}
-    }
-
-    var answers=getAnswers();
-
-    function esc(s){
-        var d=document.createElement('div');
-        d.textContent=s==null?'':s;
-        return d.innerHTML;
-    }
-
-    function renderVault(){
-        var grid=document.getElementById('answer-grid');
-        if(answers.length===0){
-            grid.innerHTML='<div class="empty-state" style="grid-column:1/-1;text-align:center;padding:40px;color:var(--text-muted);">No answers yet. Add your first STAR story above.</div>';
-            return;
-        }
-        grid.innerHTML=answers.map(function(a,idx){
-            return '<div class="answer-card">'+
-                '<span class="tag-badge '+TAG_CLASSES[a.tag]+'">'+TAG_LABELS[a.tag]+'</span>'+
-                '<h3>'+esc(a.question)+'</h3>'+
-                '<div class="star-section"><span class="star-label">Situation / Task</span><div class="star-text">'+esc(a.st)+'</div></div>'+
-                '<div class="star-section"><span class="star-label">Action</span><div class="star-text">'+esc(a.a)+'</div></div>'+
-                '<div class="star-section"><span class="star-label">Result</span><div class="star-text">'+esc(a.r)+'</div></div>'+
-                '<div class="card-actions">'+
-                    '<button type="button" class="practice-btn" data-idx="'+idx+'">🎙 Practice</button>'+
-                    '<button type="button" class="delete-btn" data-idx="'+idx+'">✕</button>'+
-                '</div>'+
-            '</div>';
-        }).join('');
-
-        // Attach Practice button listeners
-        document.querySelectorAll('.practice-btn').forEach(function(btn){
-            btn.addEventListener('click',function(){
-                var idx=parseInt(this.getAttribute('data-idx'),10);
-                openPracticeModal(idx);
-            });
-        });
-
-        // Attach Delete button listeners
-        document.querySelectorAll('.delete-btn').forEach(function(btn){
-            btn.addEventListener('click',function(){
-                var idx=parseInt(this.getAttribute('data-idx'),10);
-                if(confirm('Delete this answer?')){
-                    answers.splice(idx,1);
-                    saveAnswers(answers);
-                    renderVault();
-                }
-            });
-        });
-    }
-
-    // ---------- Echo Mode Modal ----------
-    var modal=document.getElementById('practice-modal');
-    var modalQ=document.getElementById('modal-q');
-    var revealBtn=document.getElementById('reveal-btn');
-    var closeModal=document.getElementById('close-modal');
-    var answerView=document.getElementById('modal-answer-view');
-    var mSt=document.getElementById('m-st');
-    var mA=document.getElementById('m-a');
-    var mR=document.getElementById('m-r');
-
-    function openPracticeModal(idx){
-        var a=answers[idx];
-        if(!a) return;
-        modalQ.textContent=a.question;
-        answerView.style.display='none';
-        revealBtn.style.display='inline-block';
-        modal.setAttribute('data-idx',String(idx));
-        modal.classList.add('active');
-        document.body.style.overflow='hidden';
-    }
-
-    function closePracticeModal(){
-        modal.classList.remove('active');
-        document.body.style.overflow='';
-        answerView.style.display='none';
-        revealBtn.style.display='inline-block';
-    }
-
-    revealBtn.addEventListener('click',function(){
-        var storedIdx=parseInt(modal.getAttribute('data-idx'),10);
-        var a=answers[storedIdx];
-        if(!a) return;
-        mSt.textContent=a.st;
-        mA.textContent=a.a;
-        mR.textContent=a.r;
-        answerView.style.display='block';
-        revealBtn.style.display='none';
-    });
-
-    closeModal.addEventListener('click',closePracticeModal);
-    modal.addEventListener('click',function(e){
-        if(e.target===modal) closePracticeModal();
-    });
-    document.addEventListener('keydown',function(e){
-        if(e.key==='Escape'&&modal.classList.contains('active')) closePracticeModal();
-    });
-
-    // ---------- Add Form ----------
-    document.getElementById('add-form').addEventListener('submit',function(e){
-        e.preventDefault();
-        var question=document.getElementById('f-question').value.trim();
-        var tag=document.getElementById('f-tag').value;
-        var st=document.getElementById('f-st').value.trim();
-        var a=document.getElementById('f-a').value.trim();
-        var r=document.getElementById('f-r').value.trim();
-        if(!question||!st||!a||!r) return;
-
-        answers.push({
-            question:question,
-            tag:tag,
-            st:st,
-            a:a,
-            r:r,
-            createdAt:new Date().toISOString()
-        });
-        saveAnswers(answers);
-        renderVault();
-        this.reset();
-    });
-
-    // Initial render
-    renderVault();
-})();
-</script>
-
+<script src="interview-app.js"></script>
 </body>
 </html>
