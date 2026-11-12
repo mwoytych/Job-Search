@@ -6,6 +6,78 @@
 <title>Interview Prep Vault | V.I.T.A.L. Frameworks</title>
 <meta name="description" content="Master behavioral interviews with STAR method tracking, competency tagging, and Echo Mode practice drills.">
 <link rel="stylesheet" href="styles.css">
+<style>
+/* ===== Answer Card Grid ===== */
+.answer-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 20px;
+}
+.answer-card {
+    background: var(--bg-card); border: 1px solid var(--border); border-radius: 12px;
+    padding: 20px; box-shadow: 0 2px 8px var(--shadow);
+    display: flex; flex-direction: column;
+}
+.answer-card h3 { margin-top: 0; color: var(--primary); font-size: calc(1.1rem * var(--font-scale)); }
+.tag-badge {
+    display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: .75rem;
+    font-weight: 700; text-transform: uppercase; margin-bottom: 8px;
+}
+.tag-leadership { background: rgba(37, 99, 235, .12); color: var(--primary); }
+.tag-conflict   { background: rgba(220, 38, 38, .12); color: var(--danger); }
+.tag-failure    { background: rgba(217, 119, 6, .12); color: var(--warning); }
+.tag-success    { background: rgba(5, 150, 105, .12); color: var(--success); }
+.tag-other      { background: rgba(107, 114, 128, .12); color: var(--footer-text); }
+
+.star-section { margin-bottom: 10px; }
+.star-label {
+    font-size: .75rem; font-weight: 700; color: var(--text-muted);
+    text-transform: uppercase; display: block; margin-bottom: 2px;
+}
+.star-text { font-size: calc(.9rem * var(--font-scale)); line-height: 1.5; color: var(--text-main); }
+
+.card-actions { margin-top: auto; padding-top: 15px; display: flex; gap: 8px; }
+.practice-btn {
+    flex: 1; padding: 8px; background: var(--info); color: #fff; border: none;
+    border-radius: 4px; cursor: pointer; font-weight: 600; font-size: .9rem;
+}
+.practice-btn:hover { opacity: .9; }
+.delete-btn {
+    padding: 8px 12px; background: transparent; border: 1px solid var(--danger);
+    color: var(--danger); border-radius: 4px; cursor: pointer; font-weight: 600; font-size: .9rem;
+}
+.delete-btn:hover { background: rgba(220, 38, 38, .1); }
+
+/* ===== Echo Mode Modal ===== */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, .8); z-index: 2000;
+    display: none; align-items: center; justify-content: center; padding: 20px;
+}
+.modal-overlay.active { display: flex; }
+.modal-content {
+    background: var(--bg-card); border-radius: 12px; padding: 40px; max-width: 600px;
+    width: 100%; text-align: center; position: relative;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, .2);
+}
+.modal-question {
+    font-size: calc(1.5rem * var(--font-scale)); font-weight: 700;
+    margin-bottom: 20px; color: var(--primary);
+}
+.modal-hint {
+    font-size: calc(1rem * var(--font-scale)); color: var(--text-muted); margin-bottom: 30px;
+}
+.reveal-btn {
+    padding: 12px 30px; background: var(--success); color: #fff; border: none;
+    border-radius: 6px; font-size: 1.1rem; font-weight: 700; cursor: pointer;
+}
+.reveal-btn:hover { opacity: .9; }
+.close-modal {
+    position: absolute; top: 15px; right: 20px; background: none; border: none;
+    font-size: 1.5rem; cursor: pointer; color: var(--text-muted);
+}
+.close-modal:hover { color: var(--text-main); }
+
+.form-row textarea { min-height: 100px; resize: vertical; }
+</style>
 </head>
 <body>
 
@@ -73,6 +145,7 @@ Behavioral interviews are predictable. By preparing structured STAR (Situation, 
 
 </main>
 
+<!-- Practice Modal -->
 <div class="modal-overlay" id="practice-modal">
     <div class="modal-content">
         <button class="close-modal" id="close-modal">&times;</button>
