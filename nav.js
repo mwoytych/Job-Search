@@ -9,15 +9,11 @@
         [
             { href: 'index.html',          label: 'Home' },
             { href: 'interview-prep.html', label: 'Interview Prep' }
-        ],
-        [
-            { href: '#efficiency-heading', label: 'Efficiency Dashboard' },
-            { href: '#table-heading',      label: 'All Entries' }
         ]
     ];
 
     function isActive(href) {
-        if (href.startsWith('#')) return false;
+        if (href.charAt(0) === '#') return false;
         var clean = href.replace(/^\.?\//, '');
         return page === clean;
     }
@@ -35,11 +31,5 @@
     var container = document.getElementById('site-nav');
     if (!container) return;
 
-    var output = '';
-    NAV_ROWS.forEach(function (row, i) {
-        if (i > 0) output += '<div class="nav-separator" role="separator"></div>';
-        output += buildRow(row);
-    });
-
-    container.innerHTML = output;
+    container.innerHTML = buildRow(NAV_ROWS[0]);
 })();
