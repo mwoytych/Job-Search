@@ -1,36 +1,23 @@
 (function () {
     'use strict';
 
-    // Determine current page from filename
     var path = window.location.pathname;
     var page = path.split('/').pop() || 'index.html';
     if (page === '') page = 'index.html';
 
-    // Define nav items — first array = row 1, second array = row 2
     var NAV_ROWS = [
         [
-            { href: 'index.html',         label: 'Home' },
-            { href: 'what-to-know.html',  label: 'What Should I Know?' },
-            { href: 'algebraic-mechanics.html', label: 'Algebraic Mechanics' },
-            { href: 'worked-examples.html',     label: 'Worked Examples' },
-            { href: 'exam-practice.html',       label: 'Exam Practice' },
-            { href: 'random-practice.html',     label: 'Random Practice' },
-            { href: 'challenge-exam.html',      label: 'Challenge Exam' },
-            { href: 'confidence-check.html',    label: 'Confidence Check' },
-            { href: 'calculators.html',         label: 'Calculators' }
+            { href: 'index.html',          label: 'Home' },
+            { href: 'interview-prep.html', label: 'Interview Prep' }
         ],
         [
-            { href: 'formula-reference.html',   label: 'Formula Reference' },
-            { href: 'graph-explorer.html',      label: 'Graph Explorer' },
-            { href: 'study-resources.html',     label: 'Study Resources' },
-            { href: 'math-lab-companion.html',  label: 'Math Lab Companion' },
-            { href: 'common-mistakes.html',     label: 'Common Mistakes' },
-            { href: 'cheat-sheet.html',         label: 'Cheat Sheet' }
+            { href: '#efficiency-heading', label: 'Efficiency Dashboard' },
+            { href: '#table-heading',      label: 'All Entries' }
         ]
     ];
 
     function isActive(href) {
-        // Normalize: strip leading ./ or /
+        if (href.startsWith('#')) return false;
         var clean = href.replace(/^\.?\//, '');
         return page === clean;
     }
