@@ -13,6 +13,7 @@
     ];
 
     function isActive(href) {
+        if (href.charAt(0) === '#') return false;
         var clean = href.replace(/^\.?\//, '');
         return page === clean;
     }
